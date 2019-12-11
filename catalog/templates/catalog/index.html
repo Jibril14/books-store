@@ -1,0 +1,32 @@
+
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/index.css" %}">
+{% endblock %}
+
+
+
+<div class="row">
+{% for book in books %}
+<div class="column">
+<div class="book">
+    <div class="container">
+        <div class="card">
+            <div class="img">
+            <img src="img1.png">
+            </div>
+            <div class="top-text">
+            <div class="name"> {{ book.title }}</div>
+            <p><span style="color: rgb(122, 57, 4)">By:</span> {{ book.author}}</p>
+            </div>
+            <div class="bottom-text">
+            <div class="text"><span style="color: rgb(122, 57, 4)">Summary:</span> {{ book.summary }}</div>
+            <div class="btn"><a href="#">Read More</a></div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+</div>
+{% endfor %}
+</div>  
