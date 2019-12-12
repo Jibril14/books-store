@@ -1,0 +1,31 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/index.css" %}">
+{% endblock %}
+{% block content %} 
+
+<div class="book">
+    <div class="container">
+        
+        {% for books in num_books %}
+        <div class="card">
+            <div class="img">
+            <img src="img1.png">
+            </div>
+            <div class="top-text">
+            <div class="name"> {{ books.title }}</div>
+            <p>{{ books.author}}</p>
+            </div>
+            <div class="bottom-text">
+            <div class="text">{{ books.summary }}</div>
+            <div class="btn"><a href="#">Read More</a></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+   
+{% endblock %}
