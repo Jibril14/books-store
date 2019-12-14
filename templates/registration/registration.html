@@ -1,0 +1,21 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+{% block details %}
+
+<div class="detail-page">
+  <div class="inner-detail">
+    <h1>Register To use Book Store</h1>
+    <form method="post" >
+        {% csrf_token %}
+        {{ user_form.as_p }}
+      
+        <input type="submit" name="" value="submit">
+      </form>
+  <p>Already a member?<a href="{% url 'login' %}">log in</a></p>
+</div>
+</div>
+{% endblock %}
