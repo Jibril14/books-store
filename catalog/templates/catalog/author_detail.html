@@ -1,0 +1,26 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+{% block details %}
+<div class="detail-page">
+  <div class="inner-detail">
+    <h1>Name: {{author.firstname }} <span>{{author.lastname }} </span></h1>
+    <p><strong>Date of Birth:</strong> <a href="">{{author.date_of_birth }}</a></p> 
+    <div>
+      <h4>We have the following books by this author</h4>
+      <hr>
+      {% for copy in author.book_set.all %}
+      <p><img src="{{book.book_cover}}"></p>
+      <p><strong>Book Tittle:</strong><a href="{% url 'book-detail' copy.pk %}"> {{ copy.title }}  </a></p>
+      <p><strong>ISBN:</strong> {{ copy.isbn }}</p>
+      <p><strong>Genre:</strong> {{ copy.genre.all|join:", " }} </p>
+      <hr>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+

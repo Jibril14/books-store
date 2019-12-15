@@ -1,0 +1,27 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+
+
+{% block details %}
+<div class="detail-page">
+  <div class="inner-detail">
+  <h3>Books borrowed by you</h3>
+
+  {% if bookcopy_list %}
+  <ul>
+    {% for bookcopi in bookcopy_list %}
+    <li class="{% if bookcopi.is_overdue %}text-danger{% endif %}">
+      <a href="{% url 'book-detail' bookcopi.book.pk %}">{{bookcopi.book.title}}</a> <span style="padding-left: 5px;">Due Date ({{ bookcopi.due_back }})</span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>You have not borrowed any book.</p>
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

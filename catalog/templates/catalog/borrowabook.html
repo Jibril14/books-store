@@ -1,0 +1,25 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+
+
+{% block details %}
+<div class="detail-page">
+  <div class="inner-detail">
+     <h3>Borrow: {{ book_copy.book.title }},  By: {{book_copy.book.author}}</h3>
+     <p>Rating: {{ book_copy.book.rating }}</p>
+     <p>Must be  return on or before:</p>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form> 
+  </div>
+</div>
+{% endblock %}

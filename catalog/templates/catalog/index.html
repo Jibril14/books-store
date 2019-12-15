@@ -1,32 +1,47 @@
-
+{% extends "catalog/base.html" %}
 {% load static %}
 {% block css_file %}
 <link rel="stylesheet" href="{% static "catalog/css/index.css" %}">
 {% endblock %}
 
 
-
+{% block content %} 
 <div class="row">
-{% for book in books %}
-<div class="column">
-<div class="book">
-    <div class="container">
-        <div class="card">
+    {% for book in books %}
+    <div class="column">
+      <div class="book">
+        <div class="container">
+          <div class="card">
             <div class="img">
-            <img src="img1.png">
+              <a style="text-decoration: none;"  href="{{ book.get_absolute_url }}">
+              <img src="{{book.book_cover}}">
             </div>
             <div class="top-text">
-            <div class="name"> {{ book.title }}</div>
-            <p><span style="color: rgb(122, 57, 4)">By:</span> {{ book.author}}</p>
+              <div class="name"> {{ book.title }}</div></a>
+              <div>
+                <p><span style="color: rgb(122, 57, 4)">By:</span><a style="text-decoration: none; color: inherit;" href="{% url 'author-detail' book.author.pk %}"> {{ book.author}} </a></p>
+                <p><span style="color: rgb(122, 57, 4)">Rating:</span> {{ book.rating}}</p>
+              </div>
             </div>
             <div class="bottom-text">
-            <div class="text"><span style="color: rgb(122, 57, 4)">Summary:</span> {{ book.summary }}</div>
-            <div class="btn"><a href="#">Read More</a></div>
+              <div class="text"><span style="color: rgb(122, 57, 4)">Summary:</span> {{ book.summary|truncatewords:14 }}</div>
+              <div class="btn"><a href="{{ book.get_absolute_url }}">View Book</a></div>
             </div>
-        </div>
-       
+        </div> 
     </div>
-</div>
+  </div>
 </div>
 {% endfor %}
-</div>  
+</div> 
+  <div>
+   {% if books_paginator.has_previous %}
+   <a style="color:hotpink;"  href="?page=1">1</a>
+   <a style="color:hotpink;" href="?page={{books_paginator.previous_page_number}}">Prev</a>
+    {% endif %}
+    Page: {{ books_paginator.number }} of {{books_paginator.paginator.num_pages}}
+    {% if books_paginator.has_next %}
+    <a style="color:hotpink;" href="?page={{}books_paginator.next_page_number}">Next|</a>
+    <a style="color:hotpink;" href="?page={{books_paginator.paginator.num_pages}}">Last</a>
+     {% endif %}
+  </div>
+{% endblock %}

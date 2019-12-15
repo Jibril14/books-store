@@ -6,114 +6,79 @@
 {% block css_file %}{% endblock %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
  <!-- CSS Files -->
  <link rel="stylesheet" href="{% static "catalog/css/base.css" %}">
- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
-
 </head>
 <body>
     <!-- Navigation -->
     <div class="header">
-      <nav class="nav">
-        
-        <h1 class="logo-small-screen"><a href="#">        
-            Book Store</a></h1>
+      <nav class="nav"> 
+        <h1 class="logo-small-screen"><a href="#">Book Store</a></h1>
         <div class="nav-container" >
-            <h1 class="logo"><a href="#">        
-                Book Store</a></h1>
-           
+            <h1 class="logo"><a href="{% url 'home-page' %}">Book Store</a></h1>
             <ul>
                 <li><a href="{% url 'home-page' %}">Home</a></li>
-                <li><a href="#">All Books</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
+                <li><a href="{% url 'author-list' %}">All Authors </a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout'%}?next={{request.path}}"><span style="color:rgb(255, 239, 231)">Welcome: {{ user.get_username }}|</span>Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                {% endif %}  
+                <li><a href="{% url 'loan-books' %}">Loan Books</a></li>
+             </ul>
         </div>
         <div class="menu"  id="menu-bar">
             <span class="bar"></span>
         </div>
     </nav>
-      
     </div>
 
   <!-- Page Container -->
   <div class="page-content " >
-  
     <!-- The Grid -->
     <div class="grid">
-    
+      {% block details %}
+               
+      {% endblock  %}
       <!-- Left Column -->
       <div class="left-column">
-          <div class="left-col">
-            
-
-            
-           <!-- {% block highly_rated %}
-              Highly Rated 
-          {% endblock%} -->
+          <div class="left-col"> 
         
           <div class="counter-box">
-           
-            <p class="pg"><span class="counter" data-target="{{num_books}}"></span> Books Stored</p>
-            <hr>
-            <p class="pg"><span class="counter" data-target="{{num_instances}}"></span> Book Copies</p>
-            <hr>
-            <p class="pg"><span>From</span> <span class="counter" data-target="{{num_authors}}"></span> Authors</p>
-            <hr>
-          
-            <p class="pg"><span class="counter" data-target="{{ num_instances_available}}"> </span> Books Available</p>
-            <hr>
-            
+            <p><span class="counter" data-target="{{num_books}}"></span> Books Stored</p>
+            <hr class="solid">
+            <p><span class="counter" data-target="{{num_instances}}"></span> Book Copies</p>
+            <hr class="solid">
+            <p><span>From</span> <span class="counter" data-target="{{num_authors}}"></span> Authors</p>
+            <hr class="solid">
+            <button class="storeBtn"><a href="{% url 'book-create' %}">Store a Book </a></button>
           </div>
-          
-        </div><br>
+      </div><br>
   
       <!-- End Left Column -->
       </div>
   
       <!-- Right Column -->
       <div class="right-column">
-      
         <div class="right-cols">
           {% block content %}
-          {% include "catalog/index.html" %}
-          
-          {% endblock content %}
+        
+          {% endblock  %}
         </div>
       </div>
-      
     <!-- End Grid -->
     </div>
     <!-- End Page Container -->
   </div>
-  
-  <div class="profile">
-    <div class="profile-card">
-      <div class="card-image">
-        <img src="card-img.jpg">
-      </div>
-      <div class="profile-image">
-        <img src="me.png">
-      </div>
-      <div class="card-content">
-        <h3>Abdullahi AbdulWasiu</h3>
-        <p>Lorem ipsum dolor sit amet placeat consectetur vitae! A, ipsa tempora.</p>
-      </div>
-      <div class="icons">
-        <a href="#" class="fab fa-facebook-f">fa</a>
-        <a href="#" class="fab fa-youtube">tw</a>
-        <a href="#" class="fab fa-twitter">ig</a>
-        <a href="#" class="fab fa-whatsapp">ut</a>
-      </div>
-    </div>
+
+ <!-- Profile Container -->
+  <div class="me-profile">
+    {% include "catalog/profile.html" %}
   </div>
- 
-  
+   <!-- Footer Container -->
   <footer class="footer">
     <p>Powered by <a href="#" target="_blank">ABC</a></p>
   </footer>
-  
 
   <script src="{% static "catalog/js/script.js" %}"></script> 
   </body>

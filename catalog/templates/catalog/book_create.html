@@ -1,0 +1,20 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+{% block details %}
+<div class="detail-page">
+  <div class="inner-detail">
+    <h2>Store a copy of any book Here</h2>
+    <form  method="POST">
+      {% csrf_token %}
+      <table>
+      {{ form.as_p }}
+      </table>
+      <input class="borrowBtn"  type="submit" value="Submit Book">
+   </form>
+</div>
+</div>
+{% endblock %}

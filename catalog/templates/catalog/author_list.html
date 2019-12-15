@@ -1,0 +1,20 @@
+{% extends "catalog/base.html" %}
+{% load static %}
+{% block css_file %}
+<link rel="stylesheet" href="{% static "catalog/css/detail.css" %}">
+{% endblock %}
+
+{% block details %}
+<div class="detail-page">
+    <div class="inner-detail">
+        {% if author_list %}
+        {% for author in author_list %}
+        <h1>Name: <a  href="{{ author.get_absolute_url }}">{{ author.firstname }} <span>{{author.lastname }} </span> </a></h1>
+        <p><strong>Date of Birth:</strong> <a href="">{{ author.date_of_birth }}</a></p>
+        <hr> 
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
