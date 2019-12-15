@@ -1,73 +1,69 @@
-
-.book{
+.book {
     height: 100%;
     display: grid;
     place-items: center;
-    background: #f2f2f2;
+    background: #f1eded;
     text-align: center;
-    
-
 }
 
-.container{
+.container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.card{
+.card {
     max-width: 350px;
     margin: 0 20px;
     background: #fff;
-    box-shadow: 2px 2px 5px rgb(0,0,0,0.2);   
-
+    box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.2);
 }
 
-.card .img{
+.card .img {
     height: 200px;
     width: 100%;
 }
 
-.card .img img{
+.card .img img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.card .top-text{
+.card .top-text {
     padding: 6px 20px;
 }
 
-.card .top-text .name{
+.card .top-text .name {
     font-size: 25px;
     font-weight: 600;
     color: red;
 }
 
-.card .top-text p{
+.card .top-text p {
     font-size: 20px;
     font-weight: 600;
     color: salmon;
     line-height: 20px;
 }
 
-.card .bottom-text{
+.card .bottom-text {
     padding: 5px 20px 10px 20px;
     margin-top: 4px;
     background: seagreen;
 }
 
-.card .bottom-text .text{
+.card .bottom-text .text {
     text-align: justify;
-   max-width: 350px;
+    max-width: 350px;
 }
 
-.card .bottom-text .btn{
+.card .bottom-text .btn {
     margin: 10px 0;
     text-align: left;
 }
 
-.card .bottom-text .btn a{
+.card .bottom-text .btn a {
     text-decoration: none;
     background: crimson;
     color: #fff;
@@ -76,37 +72,32 @@
     display: inline-flex;
 }
 
-
-
+a {
+    text-decoration: none;
+}
 
 @media screen and (max-width: 978px) {
-    .container{
+    .container {
         flex-wrap: wrap;
         flex-direction: column;
     }
 
-    .card{
+    .card {
         max-width: 700px;
         margin: 20px 0;
     }
 }
 
+@media (min-width: 978px) {
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 0 10px 50px 10px;
+    }
 
-
-@media (min-width:978px){
-   
-.column {
-    float: left;
-    width: 33.33%;
-    padding:0 10px 50px 10px;
-   
-  }
-  
-  
-  .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }  
-   
- }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
