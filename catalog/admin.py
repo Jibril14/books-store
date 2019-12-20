@@ -16,14 +16,14 @@ admin.site.register(Book, BookAdmin)
 
 
 class BookCopyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'status', 'due_back')
+    list_display = ('id', 'status', 'borrower', 'due_back')
     list_filter = ('status', 'due_back')
     fieldsets = (
         (None, {
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     ) 
 admin.site.register(BookCopy, BookCopyAdmin)
@@ -32,8 +32,9 @@ class BooksInline(admin.StackedInline):
     model = Book
     extra = 0
 
+
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('last_name', 'first_name', 'date_of_birth')
-    fields = ['last_name', 'first_name', ('date_of_birth')]
+    list_display = ('lastname', 'firstname', 'date_of_birth')
+    fields = ['lastname', 'firstname', ('date_of_birth')]
     inlines = [BooksInline]
 admin.site.register(Author, AuthorAdmin)
