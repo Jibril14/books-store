@@ -1,7 +1,8 @@
 
-/book_store/settings.py
-/static
 
+/static
+/secret_key.txt
+secret_key.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
