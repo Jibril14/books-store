@@ -7,7 +7,7 @@ secret_key.txt
 __pycache__/
 *.py[cod]
 *$py.class
-
+catalog/static
 # C extensions
 *.so
 

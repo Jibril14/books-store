@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2? family=Roboto:wght@400;700&display=swap");
+
+.detail-page {
+    max-width: 1000px;
+    margin: auto;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner-detail {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 4px 10px;
+    width: 80%;
+}
+.text-success {
+    background-color: rgba(31, 251, 42, 0.3);
+    color: white;
+    padding: 5px;
+}
+
+.text-danger {
+    background-color: rgba(243, 9, 9, 0.3);
+    color: white;
+    padding: 5px;
+}
+
+.text-warning {
+    background-color: rgba(47, 124, 143, 0.3);
+    color: white;
+    padding: 5px;
+}
+
+.me-profile {
+    display: none;
+}
+
+.left-column {
+    display: none;
+}
+
+.right-column {
+    display: none;
+}
+
+.borrowBtn {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.borrowBtn a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.borrowBtn:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 600px) {
+    .borrowBtn {
+        width: 100%;
+    }
+}

@@ -17,7 +17,7 @@
               <img src="{{book.book_cover}}">
             </div>
             <div class="top-text">
-              <div class="name"> {{ book.title }}</div></a>
+              <div  style="font-size:18px" class="name"> {{ book.title }}</div></a>
               <div>
                 <p><span style="color: rgb(122, 57, 4)">By:</span><a style="text-decoration: none; color: inherit;" href="{% url 'author-detail' book.author.pk %}"> {{ book.author}} </a></p>
                 <p><span style="color: rgb(122, 57, 4)">Rating:</span> {{ book.rating}}</p>
@@ -40,7 +40,7 @@
     {% endif %}
     Page: {{ books_paginator.number }} of {{books_paginator.paginator.num_pages}}
     {% if books_paginator.has_next %}
-    <a style="color:hotpink;" href="?page={{}books_paginator.next_page_number}">Next|</a>
+    <a style="color:hotpink;" href="?page={{books_paginator.next_page_number}}">Next|</a>
     <a style="color:hotpink;" href="?page={{books_paginator.paginator.num_pages}}">Last</a>
      {% endif %}
   </div>

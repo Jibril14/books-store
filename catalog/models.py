@@ -24,7 +24,7 @@ class Book(models.Model):
         max_length=500,
         help_text='Enter image link',
         blank=True,
-        default="https://res.cloudinary.com/webmonc/image/upload/v1658887052/portfolio/book-store/default_img_hfhgpg.jpg")
+        default="https://res.cloudinary.com/webmonc/image/upload/v1667726415/portfolio/book-store/bookshelv_lhhpy2.jpg")
 
     def __str__(self):
         return self.title
@@ -45,7 +45,7 @@ class BookCopy(models.Model):
         primary_key=True,
         default=uuid.uuid4,
         help_text='Unique id of this book')
-    book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True, help_text='Pls select a book to store')
+    book = models.ForeignKey('Book', on_delete=models.CASCADE, null=True, help_text='Pls select a book to store')
     imprint = models.CharField(max_length=200,  help_text='e.g (First Edition Vista Printing Press)' )
     due_back = models.DateField(null=True, blank=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True ,)
